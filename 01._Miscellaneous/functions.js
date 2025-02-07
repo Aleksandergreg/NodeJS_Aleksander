@@ -49,7 +49,7 @@ console.log(genericPerformer("Andreas", sleepingAction));
 //tara boxing
 //assignment: the desired result is: tara owns at boxing
 //write it all as a one-liner
-//const codingAction = (name) => `${name} likes coding.`;
 
-console.log(genericPerformer("Tara", (name) => `${name} likes boxing`))
+
+console.log(genericPerformer("Tara", (name) => `${name} owns at boxing`));
 

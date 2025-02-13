@@ -1,16 +1,18 @@
 const express = require('express');
 const app = express();
 
+const fingerbonesRouter = express.Router();
+
 const fingerbones = [
     { id: 1, name: "Index", details: "..." },
     { id: 2, name: "Middle", details: "..." }
 ]
 
-app.get("/fingerbones", (req, res) => {
+fingerbonesRouter.get("/", (req, res) => {
     res.json({ data: fingerbones });
 });
 
-app.get("/fingerbones/:id", (req, res) => {
+fingerbonesRouter.get("/:id", (req, res) => {
     const id = parseInt(req.params.id, 10);
     const fingerbone = fingerbones.find(fb => fb.id === id);
 
@@ -20,6 +22,8 @@ app.get("/fingerbones/:id", (req, res) => {
 
     res.json({ data: fingerbone });
 });
+
+app.use('/fingerbones', fingerbonesRouter)
 
 
 app.listen(8080);

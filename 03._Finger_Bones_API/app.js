@@ -1,4 +1,8 @@
+
+//importerer ved hjælp af require
 const express = require('express');
+
+//instansiere express
 const app = express();
 
 const fingerbonesRouter = express.Router();
@@ -12,7 +16,7 @@ fingerbonesRouter.get("/", (req, res) => {
     res.json({ data: fingerbones });
 });
 
-fingerbonesRouter.get("/:id", (req, res) => {
+fingerbonesRouter.get("/:id", (req, res) => { 
     const id = parseInt(req.params.id, 10);
     const fingerbone = fingerbones.find(fb => fb.id === id);
 
@@ -25,5 +29,5 @@ fingerbonesRouter.get("/:id", (req, res) => {
 
 app.use('/fingerbones', fingerbonesRouter)
 
-
-app.listen(8080);
+const PORT = 8080;
+app.listen(PORT);

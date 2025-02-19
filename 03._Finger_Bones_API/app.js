@@ -5,29 +5,29 @@ const express = require('express');
 //instansiere express
 const app = express();
 
-const fingerbonesRouter = express.Router();
+const fingerBonesRouter = express.Router();
 
-const fingerbones = [
+const fingerBones = [
     { id: 1, name: "Index", details: "..." },
     { id: 2, name: "Middle", details: "..." }
 ]
 
-fingerbonesRouter.get("/", (req, res) => {
-    res.json({ data: fingerbones });
+fingerBonesRouter.get("/", (req, res) => {
+    res.send({ data: fingerBones });
 });
 
-fingerbonesRouter.get("/:id", (req, res) => { 
-    const id = parseInt(req.params.id, 10);
-    const fingerbone = fingerbones.find(fb => fb.id === id);
+fingerBonesRouter.get("/:id", (req, res) => { 
+    const id = Number(req.params.id, 10);
+    const foundFingerBone = fingerBones.find(fb => fb.id === id);
 
-    if (!fingerbone) {
+    if (!foundFingerBone) {
         return res.status(404).json({ error: "Fingerbone not found" });
     }
 
-    res.json({ data: fingerbone });
+    res.send({ data: foundFingerBone });
 });
 
-app.use('/fingerbones', fingerbonesRouter)
+app.use('/fingerbones', fingerBonesRouter)
 
 const PORT = 8080;
 app.listen(PORT);

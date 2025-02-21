@@ -1,4 +1,4 @@
-
+//richardsons maturity model - følg rest api konventioner
 //importerer ved hjælp af require
 const express = require('express');
 
@@ -14,6 +14,10 @@ const fingerBones = [
     { id: 1, name: "Index", details: "..." },
     { id: 2, name: "Middle", details: "..." }
 ]
+
+//more complex but probably better way to do it:
+//let nextId = fingerBones.length ? Math.max(...fingerBones.map(fb => fb.id)) + 1 : 1;
+
 let nextId = 3;
 
 fingerBonesRouter.get("/", (req, res) => {
@@ -21,8 +25,8 @@ fingerBonesRouter.get("/", (req, res) => {
 });
 
 fingerBonesRouter.get("/:id", (req, res) => { 
-    const id = Number(req.params.id, 10);
-    const foundFingerBone = fingerBones.find(fb => fb.id === id);
+    const providedFingerBoneId = Number(req.params.id, 10);
+    const foundFingerBone = fingerBones.find(fb => fb.id === providedFingerBoneId);
 
     if (!foundFingerBone) {
         return res.status(404).send({ error: "Fingerbone not found" });
@@ -54,7 +58,7 @@ fingerBonesRouter.put("/:id", (req, res) => {
 
     const index = fingerBones.findIndex(fb => fb.id === id);
     if (index === -1) {
-      return res.status(404).json({ error: "Fingerbone not found" });
+      return res.status(404).send({ error: "Fingerbone not found" });
     }
 
     if(!name){
@@ -82,4 +86,12 @@ fingerBonesRouter.delete("/:id", (req, res) => {
 app.use('/fingerbones', fingerBonesRouter)
 
 const PORT = 8080;
-app.listen(PORT);
+//a http server is returned as a callback function
+//funktion du giver som argument til en anden function = callback
+app.listen(PORT, (error) => {
+    if(error){
+        console.log("Error starting the server", error);
+        return;
+    }
+    console.log("server is running on port", PORT);
+});

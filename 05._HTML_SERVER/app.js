@@ -1,11 +1,23 @@
 const express = require('express');
 
+//importer partieslibrary
+
+const { parties } =  require('./util/partiesLibrary.js');
+// console.log(parties);
+
+
+
 const app = express();
 
 let visitorCount = 0;
 
 app.get("/", (req, res)=> {
-    res.sendFile(__dirname + "/public/frontpage.html");
+    res.sendFile(__dirname + "/public/frontpage/frontpage.html");
+});
+
+//dirname so it matches the computer it is run on. if doing it without dirname ./ it will say it needs an absolute path
+app.get("/partypage", (req, res) => {
+    res.sendFile(__dirname + "/public/partypage/partypage.html");
 });
 
 

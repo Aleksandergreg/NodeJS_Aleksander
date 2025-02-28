@@ -1,1 +1,1 @@
-console.log("Does it work");
+console.log(partyFactory);

@@ -9,7 +9,12 @@ const { parties } =  require('./util/partiesLibrary.js');
 
 const app = express();
 
+//sikkerhedsfeature, vi fortæller klienten du må gerne tilgå alt i public, hvis vi ikke gør dette for vi MIME type. laver routes til alle vores static filer
+//så det siger sig selv at alt der ikke ligger i denne deklaration er private
+app.use(express.static('public'));
+
 let visitorCount = 0;
+//kunne f.eks også lave vores util til public, da vi f.eks ville have validering på password, jeg skulle bruge både i frontend og backend
 
 app.get("/", (req, res)=> {
     res.sendFile(__dirname + "/public/frontpage/frontpage.html");

@@ -1,11 +1,28 @@
 const express = require('express');
 
+//importer partieslibrary
+
+const { parties } =  require('./util/partiesLibrary.js');
+// console.log(parties);
+
+
+
 const app = express();
 
+//sikkerhedsfeature, vi fortæller klienten du må gerne tilgå alt i public, hvis vi ikke gør dette for vi MIME type. laver routes til alle vores static filer
+//så det siger sig selv at alt der ikke ligger i denne deklaration er private
+app.use(express.static('public'));
+
 let visitorCount = 0;
+//kunne f.eks også lave vores util til public, da vi f.eks ville have validering på password, jeg skulle bruge både i frontend og backend
 
 app.get("/", (req, res)=> {
-    res.sendFile(__dirname + "/public/frontpage.html");
+    res.sendFile(__dirname + "/public/frontpage/frontpage.html");
+});
+
+//dirname so it matches the computer it is run on. if doing it without dirname ./ it will say it needs an absolute path
+app.get("/partypage", (req, res) => {
+    res.sendFile(__dirname + "/public/partypage/partypage.html");
 });
 
 

@@ -52,6 +52,10 @@ app.get("/favoritethings/:flower/:animal", (req, res) => {
 
 })
 
+app.get("/redirecttofavoritethings", (req, res) => {
+    res.redirect("/favoritethings/tulips/sea lions");
+});
+
 
 
 app.post("/favoritepoliticians", (req, res) => {

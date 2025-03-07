@@ -2,14 +2,14 @@ import express from 'express';
 
 import path from 'path';
 //importer partieslibrary
-//asciidoc that converts .md to html
+//asciidoc that converts .md to
 
 //const { parties } =  require('./util/partiesLibrary.js');
 // console.log(parties);
-import partiesLibrary from './util/partiesLibraryES.js'; 
+// import partiesLibrary from './util/partiesLibraryES.js'; 
 
 const app = express();
-console.log(partiesLibrary);
+// console.log(partiesLibrary);
 
 //sikkerhedsfeature, vi fortæller klienten du må gerne tilgå alt i public, hvis vi ikke gør dette for vi MIME type. laver routes til alle vores static filer
 //så det siger sig selv at alt der ikke ligger i denne deklaration er private

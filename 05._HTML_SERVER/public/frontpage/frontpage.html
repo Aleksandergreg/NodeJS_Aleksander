@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="3;/partypage"/>
     <title>Frontpage</title>
     <!-- 3. link to External stylesheets-->
    <link rel="stylesheet" href="./frontpage/frontpage.css"> 
@@ -24,13 +25,16 @@
     <h2 class="headers" style = "color: green">Welcome users!</h2>
     <p>You are the visitor number: </p>
     <div id="visitorCount"></div>
+    <a href="/partypage">Click here to get referred</a>
 
 
 
-
+<!-- task in the html redirect to the partypage -->
 
         <script src="./frontpage/frontpage.js"> </script>
-         <script>  //assignment: fetch the visitors count and show it on the page
+         <script>  
+             // after 3 seconds dynamically/programmatically go to the partypage
+
             fetch('/visitorscounts')
             .then((response) => response.json())
             .then(result  => {
@@ -38,6 +42,10 @@
                 document.getElementById('visitorCount').textContent = result.data;
             })
             .catch(error => console.error('Error:', error));
+    //         setTimeout(() => {
+    // // window.location.href = "/partypage";
+    // window.location.replace("/partypage");
+    // }, 3000);
         </script>
 </body>
 </html>

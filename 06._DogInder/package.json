@@ -1,0 +1,29 @@
+{
+  "name": "doginder",
+  "version": "0.0.1",
+  "description": "tinder for indian dogs",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aleksandergreg/NodeJS_Aleksander.git"
+  },
+  "keywords": [
+    "love",
+    "dogs",
+    "tinder",
+    "indian"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Aleksandergreg/NodeJS_Aleksander/issues"
+  },
+  "homepage": "https://github.com/Aleksandergreg/NodeJS_Aleksander#readme",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

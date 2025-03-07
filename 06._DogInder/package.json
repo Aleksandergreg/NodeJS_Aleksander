@@ -5,7 +5,9 @@
   "type": "module",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev":"cross-env PORT=8080 nodemon app.js",
+    "prod":"cross-env PORT=80 ENVIROMENT=PROD  node app.js"
+    
   },
   "repository": {
     "type": "git",
@@ -25,5 +27,8 @@
   "homepage": "https://github.com/Aleksandergreg/NodeJS_Aleksander#readme",
   "dependencies": {
     "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
   }
 }

@@ -4,4 +4,5 @@ const frontpage = readPage('./public/pages/frontpage/frontpage.html')
 export const frontpagePage = constructPage(frontpage);
 
 const matches = readPage('./public/pages/matches/matches.html');
-export const matchesPage = constructPage(matches);
+export const matchesPage = constructPage(matches, 'DogInder | Matches', 
+    '<link rel="stylesheet" href="/pages/matches/matches.css">');

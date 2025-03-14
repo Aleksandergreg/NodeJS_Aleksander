@@ -20,6 +20,7 @@ function createMatchImage(dog) {
 
     const imageTag = document.createElement("img");
     imageTag.src = dog.image;
+    image.alt = "dog match";
     imageTag.id = "dog-matches-image";
 
     dogMatchesImageContainerDiv.innerHTML = "";

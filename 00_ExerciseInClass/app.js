@@ -80,6 +80,8 @@ app.delete("/fingerbones/:id", (req, res) =>{
     }
 });
 
+console.log(5 + "10");
+
 //status codes
 // 2XX - Everything went well
 // 4XX - Client Error

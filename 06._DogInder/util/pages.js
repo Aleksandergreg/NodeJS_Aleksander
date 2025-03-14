@@ -1,10 +1,7 @@
-import fs from 'fs';
+import { readPage, constructPage } from "./templatingEngine.js";
 
-const header = fs.readFileSync('./public/components/header/header.html').toString();
-const footer = fs.readFileSync('./public/components/footer/footer.html').toString();
+const frontpage = readPage('./public/pages/frontpage/frontpage.html')
+export const frontpagePage = constructPage(frontpage);
 
-const frontpage = fs.readFileSync('./public/frontpage/frontpage.html').toString();
-const matches = fs.readFileSync('./public/matches/matches.html').toString();
-
-export const frontpagePage = header + frontpage + footer;
-export const matchesPage = header + matches + footer;
+const matches = readPage('./public/pages/matches/matches.html');
+export const matchesPage = constructPage(matches);

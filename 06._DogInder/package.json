@@ -5,9 +5,8 @@
   "type": "module",
   "main": "app.js",
   "scripts": {
-    "dev":"cross-env PORT=8080 nodemon app.js",
-    "prod":"cross-env PORT=80 ENVIROMENT=PROD  node app.js"
-    
+    "dev": "cross-env PORT=8080 nodemon app.js",
+    "prod": "cross-env PORT=80 ENVIROMENT=PROD  node app.js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +25,7 @@
   },
   "homepage": "https://github.com/Aleksandergreg/NodeJS_Aleksander#readme",
   "dependencies": {
+    "@faker-js/faker": "^9.6.0",
     "express": "^4.21.2"
   },
   "devDependencies": {

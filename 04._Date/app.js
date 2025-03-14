@@ -10,7 +10,7 @@ console.log(Date()); //Local date time (CEST FOR US)
 console.log(Date.now()); //Unix time / Epoch (seconds since 1970 Jan. 1st)
 
 //assignment: Create a route called /months which returns the current month as a response
-
+// don't put it inside function scope as it will then be initialised everytime that endpoint is called
 const monthNames = [
     "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"

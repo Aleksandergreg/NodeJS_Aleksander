@@ -27,6 +27,10 @@ app.get("/partypage", (req, res) => {
     res.sendFile(path.resolve("public/partypage/partypage.html"));
 });
 
+app.get("/dangerouspage", (req,res) => {
+    res.sendFile(path.resolve("public/dangerouspage/dangerouspage.html"));
+});
+
 
 //task create a route /visitourcounts that returns the visitor count
 app.get("/visitorscounts", (req, res) => {

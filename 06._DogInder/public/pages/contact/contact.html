@@ -1,0 +1,20 @@
+<H1> Here you can find our contact info:</H1>
+<p>Email: lalala@lalala.dk</p>
+
+<form action="/api/contact" method="POST">
+    <fieldset>
+    <legend>Contact</legend>
+        <label for="email">Email</label><br>
+        <input type="email" id="email" name="email" required placeholder="Your email"><br>
+
+        <label for="name" id="name" name="name">Name</label><br>
+        <input type="text" placeholder="Your Name..." id="name" name="name" required>
+
+        <!-- <label for="message">Message:</label><br>
+        <input type="text" id="message" name="message" required placeholder="Write message"> -->
+
+        <textarea name="message" cols="80" rows="15"></textarea>
+
+        <button aria-label="Submit Form">Submit</button>
+    </fieldset>
+  </form>

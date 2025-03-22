@@ -1,4 +1,6 @@
 <script>
+  import FirstMessage from "./FirstMessage.svelte";
+
     const messages = $state(["Hello", "Mother"]);
 
     let messageInput = $state("");
@@ -18,3 +20,5 @@
 <p>{messages}</p>
 
 <button onclick={saveMessage}>Submit Message</button>
+
+<FirstMessage {firstMessage}></FirstMessage>

@@ -1,5 +1,6 @@
 <script>
-    const { name, familySheep, isGirl,  } = $props();
+    //destructure den = henter den ud af props
+    const { name, familySheep, isGirl, onShowLove, onEatCooki  } = $props();
 </script>
 <div
     class:is-girl={isGirl}
@@ -8,6 +9,10 @@
 >
     <h3>{name}</h3>
 </div>
+
+<button onclick={() => onShowLove(name)} > Show love</button>
+
+<button onclick={() => onEatCooki(name)}> Eat cookie</button>
 
 <style>
     .is-boy {

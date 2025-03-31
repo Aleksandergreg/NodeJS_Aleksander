@@ -1,6 +1,25 @@
 <script>
     //destructure den = henter den ud af props
     const { name, familySheep, isGirl, onShowLove, onEatCooki  } = $props();
+
+    import { fridgeMessages } from "../../stores/fridgemessagesStore.js";
+
+    let fridgeMessageInput = $state("");
+
+    function writeMessageOnFridge() {
+
+        fridgeMessages.set(
+            [...$fridgeMessages,
+            {
+                message: fridgeMessageInput
+            }
+            ]);
+
+
+        
+
+         fridgeMessageInput = "";
+    }
 </script>
 <div
     class:is-girl={isGirl}
@@ -10,9 +29,19 @@
     <h3>{name}</h3>
 </div>
 
-<button onclick={() => onShowLove(name)} > Show love</button>
+<!-- task create an input field and a button and when the button is clicked, log the value of the input -->
 
-<button onclick={() => onEatCooki(name)}> Eat cookie</button>
+
+
+<button onclick={() => onShowLove(name)} >Show love</button>
+
+<button onclick={() => onEatCooki(name)}>Eat cookie</button>
+
+<br>
+
+
+<input bind:value={fridgeMessageInput}>
+<button onclick={writeMessageOnFridge}>Write message</button>
 
 <style>
     .is-boy {

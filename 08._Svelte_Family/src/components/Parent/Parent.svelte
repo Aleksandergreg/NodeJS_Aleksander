@@ -1,5 +1,6 @@
 <script>
   import Child from "../Child/Child.svelte";
+  import { fridgeMessages } from "../../stores/fridgemessagesStore.js";
 
 const { name: parentName, children } = $props();
 
@@ -19,7 +20,15 @@ function handleEatCookie(childName) {
   }
 }
 
+// function wipe() {
+//     fridgeMessages.set([]);
+// }
+
+
 </script>
+
+<button onclick = {fridgeMessages.wipe}> Wipe fridge </button>
+
 <p>
 {#each cookieJar as cookie }
 {cookie}

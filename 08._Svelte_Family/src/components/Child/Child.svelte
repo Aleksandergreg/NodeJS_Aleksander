@@ -3,7 +3,6 @@
     const { name, familySheep, isGirl, onShowLove, onEatCookie } = $props();
 
     import { fridgeMessages } from "../../stores/fridgemessagesStore.js";
-    import { createEventDispatcher } from 'svelte'; // Needed if using dispatch later
 
     // Note: If you were using event dispatching instead of passing callbacks
     // you would use: const dispatch = createEventDispatcher();

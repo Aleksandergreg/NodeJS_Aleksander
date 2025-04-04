@@ -5,7 +5,7 @@ const express = require('express');
 //instansiere express
 const app = express();
 
-//Middleware to parse json bodies. ASK ANDERS ABOUT THIS
+//Middleware to parse json bodies.
 app.use(express.json());
 
 const fingerBonesRouter = express.Router();

@@ -2,14 +2,52 @@ import express from 'express';
 
 const app = express();
 
-app.use(express.static('public'));
+import helmet from 'helmet';
+
+app.use(helmet());
+
+import session from 'express-session';
+
+app.use(session({
+    //todo this should never be pushed as we don't want our secrets in plain text
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: false,
+    cookie: { secure: false }
+  }));
+
+
+
+import { rateLimit } from 'express-rate-limit'
+
+const generalLimiter = rateLimit({
+	windowMs: 15 * 60 * 1000, // 15 minutes
+	limit: 300, // Limit each IP to 300 requests per `window` (here, per 15 minutes).
+	standardHeaders: 'draft-8', // draft-6: `RateLimit-*` headers; draft-7 & draft-8: combined `RateLimit` header
+	legacyHeaders: false, // Disable the `X-RateLimit-*` headers.
+	// store: ... , // Redis, Memcached, etc. See below.
+})
+
+app.use(generalLimiter);
+
+const authLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000, //15 minutes
+    limit: 5, 
+    standardHeaders: 'draft-8',
+    legacyHeaders: false
+});
+
+app.use("/auth", authLimiter);
 
 import middlewareRouter from "./routers/middlewareRouter.js"
+app.use(middlewareRouter);
+
 
 import authRouter from "./routers/authRouter.js"
-
-app.use(middlewareRouter);
 app.use(authRouter);
+
+import sessionRouter from "./routers/sessionRouter.js"
+app.use(sessionRouter);
 
 
 function greetLoggedInUsers(req, res, next) {
@@ -21,9 +59,13 @@ function greetLoggedInUsers(req, res, next) {
 
 app.use("/auth", greetLoggedInUsers);
 
-app.get("/*splat", (req,res) => {
+app.get("/{*splat}", (req,res) => {
     res.send("<h1>Not Found</h1>")
 });
+
+app.all("/{*splat}", (req, res) =>{
+    res.status(404).send({ message: `${req.path} for ${req.method} Not found` })
+})
 
 
 const PORT = Number(process.env.PORT) || 8080;

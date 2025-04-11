@@ -1,16 +1,20 @@
 <script>
-    let employees = $state([]);
+  import { onMount, unmount } from "svelte";
+  import { BASE_URL } from "../../stores/generalStore";
 
-    fetch("http://localhost:8080/employees")
-    .then((response) => response.json())
-    .then((result) => {
+
+  let employees = $state([]);
+
+  onMount(() => {
+    fetch($BASE_URL+"/employees")
+      .then((response) => response.json())
+      .then((result) => {
         employees = result.data;
-    } )
-
+      });
+    });
 </script>
 
 <h3>Employees Available</h3>
-<h4>...</h4>
-{#each employees as employee }
-    <h4>{employee}</h4>
-    {/each}
+{#each employees as employee}
+  <h4>{employee}</h4>
+{/each}

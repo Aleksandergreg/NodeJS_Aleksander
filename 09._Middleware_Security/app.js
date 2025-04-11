@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import express from 'express';
 
 const app = express();
@@ -11,7 +12,6 @@ import session from 'express-session';
 // import dotenv from 'dotenv';
 // dotenv.config();
 
-import dotenv from 'dotenv/config';
 
 
 

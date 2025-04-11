@@ -4,13 +4,9 @@ import express from 'express';
 
 const app = express();
 
-app.use(express.json()); //motherfucking middleware for json parsing hihi
+app.use(express.static(path.resolve('../client/dist')));
 
-import cors from 'cors';
-app.use(cors({
-origin : true,
-credentials : true
-}));
+app.use(express.json()); //motherfucking middleware for json parsing hihi
 
 import session from 'express-session';
 
@@ -22,18 +18,18 @@ app.use(session({
   }))
 
 
-// app.use((req, res, next) => {
-//     res.header("Access-Control-Allow-Origin", "*");
-//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//     next();
-// });
-
 import pillsRouter from './routers/pillsRouter.js'
 
 app.use(pillsRouter);
 
 import employeesRouter from './routers/employeesRouter.js'
 app.use(employeesRouter)
+
+import path from 'path';
+
+app.get("/{*splat}", (req,res) =>{
+  res.sendFile(path.resolve('../client/dist/index.html'));
+})
 
 
 

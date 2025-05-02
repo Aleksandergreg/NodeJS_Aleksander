@@ -1,8 +1,7 @@
 import 'dotenv/config';
 import { MailerSend, EmailParams, Sender, Recipient } from "mailersend";
 
-// debugging where to put the .env file
-console.log(`Your API key is: ${process.env.API_KEY}`);
+
 
 const mailerSend = new MailerSend({
   apiKey: process.env.API_KEY,
